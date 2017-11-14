@@ -13,6 +13,7 @@ var scratch = {
       'less/mixins.less',
       'less/main.less',
       'less/form.less',
+      'less/media.less',
     ],
 	html: './index.html',
   js: [
@@ -23,7 +24,7 @@ var scratch = {
       'js/Students.js',
       'js/services/AbonementService.js',
       'js/Abonements.js',
-      'js/ux/tabs.js',
+      'js/ux/Tabs.js',
       'js/ux/Search.js',
       'js/app.js',
     ],
@@ -62,4 +63,4 @@ gulp.task('watch', function(){
 	gulp.watch(scratch.js, ['js']);
 })
 
-gulp.task('default', ['connect', 'watch', 'html', 'js', 'less']);
+gulp.task('default', ['connect', 'html', 'js', 'less', 'watch']);

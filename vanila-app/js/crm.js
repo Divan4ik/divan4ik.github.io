@@ -555,7 +555,7 @@ var Abonements;
   Abonements = AbonementsModule;
 
 })(this, this.document);
-'user strict';
+'use strict';
 
 var App = App || {};
 App.Ux = App.Ux || {};
