@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pixel Art maker project</title>
+  <meta charset="utf-8">
+  <meta name="author" content="divan4ik@hotmail.com">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton|Roboto:300,400">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div id="root">
+    <div class="container">
+      <h1>Lab: Pixel Art Maker</h1>
+
+      <div id="sizePicker">
+        <div class="cols">
+          <div class="col">
+            <div class="label">grid width</div>
+            <input type="text" class="params" name="width" id="input_width">
+          </div>
+          <div class="col">
+            <div class="label">grid height</div>
+            <input type="text" class="params" name="height" id="input_height">
+          </div>
+        </div>
+        <button class="start">Create Grid</button>
+      </div>
+      <div class="icon-with-text center-block">
+        <div class="icon">
+          <div id="color-picker-wrapper">
+            <input type="color" id="colorPicker">
+          </div>
+        </div>
+        <div class="text">
+          <label class="label color" for="colorPicker">Change brush color</label>
+        </div>
+      </div>
+
+      <div id="grid" class="workspace"></div>
+    </div>
+    <footer>
+      <div class="container">
+        <details>
+          <summary>References</summary>
+          <p><em>Here i would like to show some resourses used for lab</em>
+          </p>
+          <p><a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/">Addy Osmani - Learning JavaScript Design Patterns</a>
+          </p>
+          <p><a href="https://uigradients.com/#Bighead">Ui backgrounds</a>
+          </p>
+          <p><a href="https://fonts.google.com/specimen/Roboto">Google Fonts</a>
+          </p>
+          <p><a href="https://stackoverflow.com/questions/11167281/webkit-css-to-control-the-box-around-the-color-in-an-inputtype-color">Change Color Input Style (stackoverflow)</a>
+          </p>
+        </details>
+      </div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+</body>
+
+</html>

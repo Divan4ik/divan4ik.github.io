@@ -1,0 +1,185 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  font-size: 16px;
+  margin:0;
+  padding:0;
+}
+
+body {
+  text-align: center;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  color: white;
+  background: #c94b4b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4b134f, #c94b4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h1 {
+  font-family: Monoton;
+  font-size: 150%;
+  margin: 0.6em;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 110%;
+}
+
+a {
+  color: yellow;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: white;
+}
+
+.container {
+  width: 100%;
+  margin:0 auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+input[type="text"] {
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+}
+
+
+input[type="color"] {
+  visibility: hidden;
+}
+
+#color-picker-wrapper {
+  position: relative;
+  display: block;
+  background-color: black;
+  height: 1.8em;
+  width: 1.8em;
+  border-radius: 5em;
+  cursor: pointer;
+  margin: 0 auto;
+  border: 2px solid white;
+}
+
+
+
+
+.label {
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 0.5em;
+}
+
+.label.color {
+  display: inline-block;
+  border-bottom: 1px dashed rgba(255,255,255,0.8);
+  cursor: pointer;
+}
+
+
+/* COLS */
+
+.cols {
+  display:flex;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+
+.col {
+  -webkit-width: calc(50%);
+  width: calc(50%);
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+
+/* ICON WITH TEXT */
+.icon-with-text {
+  width: 200px;
+  display:flex;
+}
+
+.icon-with-text .icon {
+  width: 50px;
+}
+
+.icon-with-text .text {
+  width: 150px;
+}
+
+
+
+/* WORkSPACE */
+.workspace {
+  margin: 20px 0 20px;
+}
+
+.workspace .table {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  border-collapse: collapse;
+}
+
+.workspace .row {
+  display: table-row;
+}
+
+.workspace .cell {
+  background: #fff;
+  display: table-cell;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.workspace .cell:hover {
+  background-color: #f4f4f4;
+}
+
+.workspace .cell.hightlight {
+  background: blue
+}
+
+
+
+/* MIX */
+
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  width: 100%;
+  border: 3px solid white;
+  border-radius: 3px;
+  font-size: 110%;
+  color: white;
+  padding: 1em;
+  cursor: pointer;
+  background: transparent;
+  margin: 2em 0;
+  transition: all 0.15s linear;
+  outline: none;
+}
+
+button:hover {
+  background: white;
+  color: #666
+}
+
+@media screen and (min-width: 32em) {
+  h1 {
+    font-size: 220%;
+  }
+  .container {
+    width: 510px;
+  }
+}

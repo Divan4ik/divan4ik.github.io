@@ -1,0 +1,29 @@
+{
+  "name": "divan4ik.github.io",
+  "version": "1.0.0",
+  "description": "my portofilo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Divan4ik/divan4ik.github.io.git"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Dmitry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Divan4ik/divan4ik.github.io/issues"
+  },
+  "homepage": "https://github.com/Divan4ik/divan4ik.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-less": "^3.3.2",
+    "gulp-minify": "^2.1.0"
+  }
+}
