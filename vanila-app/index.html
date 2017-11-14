@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vanila Javascript Application</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/app.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+	<div class="wrap"></div>
+	<template id="StudentsModule">
+		<section class="students region">
+			<div class="items"></div>
+			<span class="student add">Add student</span>
+		</section>
+	</template>
+	<template id="studentFormTpl">
+		<div class="student-form form">
+			<input class="input" type="text" name="name" placeholder="type name..." value="test"/>
+			<input class="input" type="text" name="lastname"  value="test" placeholder="type lastname..."/>
+			<input class="input" type="text" name="phone"  value="test" placeholder="type age..."/>
+			<button class="button submit">Add student</button>
+			<button class="button abort">Abort</button>
+		</div>
+	</template>
+	<template id="studentTpl">
+		<div data-id="{{id}}" class="item">{{name}} {{lastname}}, {{phone}} <span class="remove"></span></div>
+	</template>
+
+	<template id="AbonementsModule">
+		<section class="abonements region">
+			<div class="items"></div>
+			<span class="abonement add">New Abonement</span>
+		</section>
+	</template>
+	<template id="abonementFormTpl">
+		<div class="abonement-form form">
+			<select name="client_id"></select>
+			<input class="input" type="text" value="" name="till" placeholder="type till..."/>
+			<button class="button submit">Add abonement</button>
+			<button class="button abort">Abort</button>
+		</div>
+	</template>
+	<template id="abonementViewTpl">
+		<div class="abonement-form form">
+			<select name="client_id"></select>
+			<input class="input" type="text" value="" name="till" placeholder="type till..."/>
+			<button class="button submit">Add abonement</button>
+			<button class="button abort">Abort</button>
+		</div>
+	</template>
+	<template id="abonementTpl">
+		<div data-id="{{id}}" class="item">{{owner.fullName}}, {{till}} <span class="remove"></span></div>
+	</template>
+	<template id="SearchModule">
+		<div class="search">
+			<div class="box">
+			<input id="search-box" type="text" placeholder="find student here..." name="" />
+			</div>
+		</div>
+		<div class="search-results items"></div>
+	</template>
+	<template id="searchResultTpl">
+		<div data-id="{{id}}" class="item">{{name}} {{lastname}}, {{phone}}</div>
+	</template>
+	<script src="js/crm.js"></script>
+</body>
+</html>
