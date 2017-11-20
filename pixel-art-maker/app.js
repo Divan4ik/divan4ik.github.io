@@ -9,9 +9,22 @@
 
 (function(g, d, $){
 
-    var App  = App || (function(){
+    const Generator = function() {
+        var app_environment = this;
+        return function(element) {
+            try {
+                return new Library[element];
+            } catch (Exception) {
+                throw new Error('element "' + element + '" doesnt exists');
+            }
+        }
+    };
 
-        var workspace,
+
+
+    let App = (function(){
+
+        let workspace,
             rowsInput,
             colsInput,
             startButton,
@@ -28,17 +41,17 @@
             grid = {
                 cols: 15,
                 rows: 15,
-                ceilLength: 20,
+                cellLength: 20,
                 brushColor: '#2980b9'
             };
 
           	/**
-    		 *  Bind Events
+    		 *  Initialization
     		 *	@return void
     		 */
-        var init = function() {
+        const init = function() {
 
-                workspace = $('#grid');
+                workspace = $('.workspace');
                 rowsInput = $('#input_height');
                 colsInput = $('#input_width');
                 inputs = $('input.params');
@@ -47,9 +60,9 @@
                 brushReplacer = $("#color-picker-wrapper");
                 canvasWidth = $('#root .container').width();
                 isMobile = canvasWidth < 400 || false;
-
-                setPredefinedValues();
-                bindEvents();
+                if(isMobile) grid.celllLength = (canvasWidth/grid.cols).toFixed(0);
+                //setPredefinedValues();
+                //bindEvents();
             },
 
             /**
@@ -74,7 +87,7 @@
                 });
 
                 workspace.on('click', '.cell', function() {
-                    var cell = $(this),
+                    let cell = $(this),
                         background = cell.hasClass('painted') ? 'white': grid.brushColor;
                     cell.css({background: background}).toggleClass('painted');
                 });
@@ -138,20 +151,30 @@
             makeGrid = function() {
               
                 
-                var tableHtml = $('<table class="table"></table>'),
+                let tableHtml = $('<table class="table"></table>'),
                     rowHtml = $('<tr class="row"></tr>'),
                     cellHtml = $('<td width="'+grid.ceilLength+'" height="'+grid.ceilLength+'" class="cell"></td>');
 
-                for(var r = 0; r < grid.rows; r++) {
-                    var row = rowHtml.clone();
-                    for(var c = 0; c < grid.cols; c++) {
-                        var cell = cellHtml.clone();
+                for(let r = 0; r < grid.rows; r++) {
+                    let row = rowHtml.clone();
+                    for(let c = 0; c < grid.cols; c++) {
+                        let cell = cellHtml.clone();
                         row.append(cell);
                     }
                     tableHtml.append(row);
                 }
 
                 workspace.html('').append(tableHtml);
+            },
+
+            test = function() {
+                this.init();
+                let table = new Table(workspace);
+                table.setCellWidth = grid.cellLength;
+                table.createMatrix(grid.rows, grid.cols);
+                console.log(table);
+                table.render();
+
             };
 
         /**
@@ -160,17 +183,119 @@
          */
         return {
             makeGrid: makeGrid,
-            init: init
+            init: init,
+            test: test
         }
 
     })();
 
+
+    class TableElement {
+        constructor() {
+            this.name;
+            this.element;
+        }
+
+        html() {
+            return this.element;
+        }
+    }
+
+    class Cell extends TableElement {
+
+        constructor(sideWidth) {
+            super();
+            this.cellWidth;
+            this.name = 'cell';
+            this.element = $('<td class="cell"></td>');
+        }
+
+        html() {
+            let newHtml = this.element
+            this.element.attr('width', 20);
+            this.element.attr('height', 20);
+            this.element.on('click', this.onCLick);
+            return this.element;
+        }
+
+        onCLick() {
+            console.log(this);
+        }
+        
+        paint(color) {
+            this.element.css({'background-color': color});
+        };
+    };
+
+    class Row extends TableElement {
+        constructor() {
+            super();
+            this.name = 'row';
+            this.element = $('<tr class="row"></tr>');
+            this.cells = [];
+        }
+    }
+
+    class Table {
+        constructor(node) {
+            this.element = node;
+            this.name = 'Table';
+            this.matrix = [];
+            this.create = new Generator();
+        }
+
+        addRow() {
+            return this.create('row');
+        }
+
+        addCell() {
+            return this.create('cell');
+        }
+
+        render() {
+            let table = $('<table class="table"></table>');
+
+            for(let r = 0; r < this.matrix.length; r++) {
+                let row = this.matrix[r].html();
+                for(let c = 0; c < this.matrix[r].cells.length; c++) {
+                    let cell = this.matrix[r].cells[c].html();
+                    row.append(cell);
+                }
+                table.append(row);
+            }
+            this.element.append(table);
+        }
+
+        createMatrix(x, y) {
+            
+            for(let r = 0; r < x; r++) {
+
+                let row = this.addRow();
+
+                for(let c = 0; c < y; c++) {
+                    let cell = this.addCell(this.cellWidth);
+                    row.cells.push( cell );
+                }
+
+                this.matrix.push(row);
+            }
+        }
+        setCellWidth(width) {
+            this.cellWidth = width;
+        }
+    }
+
+    const Library = {
+        cell: Cell,
+        row: Row
+    };
+
     g.App = App;
+    
 
     $(function(){
 
-        App.init();
-      
+        App.test();
       
     });
 
